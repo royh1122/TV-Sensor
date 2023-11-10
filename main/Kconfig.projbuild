@@ -1,0 +1,91 @@
+menu "I2C Configuration"
+
+    menu "I2C Master"
+        config I2C_MASTER_SCL
+            int "SCL GPIO Num"
+            default 23
+            help
+                GPIO number for I2C Master clock line.
+
+        config I2C_MASTER_SDA
+            int "SDA GPIO Num"
+            default 22
+            help
+                GPIO number for I2C Master data line.
+
+        config I2C_MASTER_PORT_NUM
+            int "Port Number"
+            default 1
+            help
+                Port number for I2C Master device.
+
+        config I2C_MASTER_FREQUENCY
+            int "Master Frequency"
+            default 100000
+            help
+                I2C Speed of Master device.
+    endmenu
+
+    menu "I2C Slave"
+        config I2C_SLAVE_SCL
+            int "SCL GPIO Num"
+            default 26
+            help
+                GPIO number for I2C Slave clock line.
+
+        config I2C_SLAVE_SDA
+            int "SDA GPIO Num"
+            default 25
+            help
+                GPIO number for I2C Slave data line.
+
+        config I2C_SLAVE_PORT_NUM
+            int "Port Number"
+            default 0
+            help
+                Port number for I2C Slave device.
+
+        config I2C_SLAVE_ADDRESS
+            hex "ESP Slave Address"
+            default 0x28
+            help
+                Hardware Address of I2C Slave Port.
+    endmenu
+
+endmenu
+
+menu "Device Settings"
+    config DEVICE_MODE
+        int "Device Mode"
+        default 1
+        help
+            Select the device mode.
+            0: Data Collection
+            1: TV Detection
+            2: Ambient Light Level
+    
+    config TRIGGER_SENSITIVITY
+        int "Trigger Sensitivity"
+        default 6
+        help
+            Select the trigger sensitivity.
+            lower value: more sensitive
+            higher value: less sensitive
+
+    config WINDOW_SIZE
+        int "Window Size"
+        default 1875
+        help
+            Select the window size.
+            lower value: smaller time gate
+            higher value: larger time gate
+            default value: 1875 (5 minutes)
+
+    config TERMINAL_OUTPUT
+        int "Terminal Output"
+        default 0
+        help
+            Enable terminal output.
+            0: disable
+            1: enable
+endmenu
